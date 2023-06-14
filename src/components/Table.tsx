@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import TableBody from "./TableBody";
+import TableHead from "./TableHead";
 
 interface VolumeInfo {
   authors: string[];
@@ -13,30 +15,26 @@ interface DataItem {
 
 interface TableProps {
   data: DataItem[];
+  onRowClick: (row: DataItem) => void;
+  selectedRow?: any;
 }
 
-const Table: React.FC<TableProps> = ({ data }) => {
+const Table: React.FC<TableProps> = ({
+  data,
+  onRowClick,
+  selectedRow,
+}) => {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Author</th>
-          <th>Title</th>
-          <th>Kind</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
-            <td>{item.id}</td>
-            <td>{item.volumeInfo.authors.join(', ')}</td>
-            <td>{item.volumeInfo.title}</td>
-            <td>{item.kind}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg h-[400px] cursor-pointer">
+      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <TableHead />
+        <TableBody
+          data={data}
+          selectedRow={selectedRow}
+          onRowClick={onRowClick}
+        />
+      </table>
+    </div>
   );
 };
 
