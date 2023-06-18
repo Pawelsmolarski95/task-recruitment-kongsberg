@@ -10,10 +10,16 @@ const TableHead = () => {
             <div className="flex items-center">Author</div>
           </th>
           <th scope="col" className="px-6 py-3">
-            <div className="flex items-center">Title</div>
+            <div className="flex items-center">Categories</div>
           </th>
           <th scope="col" className="px-6 py-3">
-            <div className="flex items-center">Kind</div>
+            <div className="flex items-center">Title</div>
+          </th>
+          <th scope="col" className="px-6 py-3 ">
+            <div className="flex items-center max-w-[100px]">Description</div>
+          </th>
+          <th scope="col" className="px-6 py-3">
+            <div className="flex items-center">Page Count</div>
           </th>
         </tr>
       </thead>

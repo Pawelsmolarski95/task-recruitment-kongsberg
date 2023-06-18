@@ -4,33 +4,37 @@ import Table from "./components/Table";
 
 import { fetchData } from "./api/api";
 import ShowRowValue from "./components/ShowRowValue";
+import { Book } from "./types/types";
+import PageHeader from "./components/PageHeader";
 
-interface VolumeInfo {
-  authors: string[];
-  title: string;
-}
-
-interface DataItem {
-  id: string;
-  volumeInfo: VolumeInfo;
-  kind: string;
-}
-
-function App() {
-  const [data, setData] = useState([]);
-  const [selectedRow, setSelectedRow] =
-    useState<DataItem | null>(null);
+const App = () => {
+  const [data, setData] = useState<Book[]>([]);
+  const [selectedRow, setSelectedRow] = useState<Book | null>(null);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
       const fetchedData = await fetchData();
-      setData(fetchedData);
+
+      const mappedData = fetchedData.map((book) => ({
+        id: book.id,
+        volumeInfo: {
+          authors: book.author ? [book.author] : [],
+          title: book.title,
+          description: book.description,
+          categories: typeof book.categories === 'string' ? [book.categories] : book.categories,
+          pageCount: book.pageCount,
+        },
+      }));
+
+      setData(mappedData);
     };
+
     fetchDataAsync();
   }, []);
 
   return (
     <>
+      <PageHeader>Recruitment task Kongsberg</PageHeader>
       <ShowRowValue selectedRow={selectedRow} />
       <Table
         data={data}
@@ -39,6 +43,6 @@ function App() {
       />
     </>
   );
-}
+};
 
 export default App;

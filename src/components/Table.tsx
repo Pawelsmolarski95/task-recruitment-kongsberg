@@ -1,22 +1,15 @@
 import React from "react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
+import { Book } from "../types/types";
 
-interface VolumeInfo {
-  authors: string[];
-  title: string;
-}
 
-interface DataItem {
-  id: string;
-  volumeInfo: VolumeInfo;
-  kind: string;
-}
+
 
 interface TableProps {
-  data: DataItem[];
-  onRowClick: (row: DataItem) => void;
-  selectedRow?: any;
+  data: Book[];
+  onRowClick: (row: Book) => void;
+  selectedRow?: Book | null;
 }
 
 const Table: React.FC<TableProps> = ({
