@@ -3,9 +3,6 @@ import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 import { Book } from "../types/types";
 
-
-
-
 interface TableProps {
   data: Book[];
   onRowClick: (row: Book) => void;

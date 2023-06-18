@@ -9,7 +9,8 @@ import PageHeader from "./components/PageHeader";
 
 const App = () => {
   const [data, setData] = useState<Book[]>([]);
-  const [selectedRow, setSelectedRow] = useState<Book | null>(null);
+  const [selectedRow, setSelectedRow] =
+    useState<Book | null>(null);
 
   useEffect(() => {
     const fetchDataAsync = async () => {
@@ -21,7 +22,10 @@ const App = () => {
           authors: book.author ? [book.author] : [],
           title: book.title,
           description: book.description,
-          categories: typeof book.categories === 'string' ? [book.categories] : book.categories,
+          categories:
+            typeof book.categories === "string"
+              ? [book.categories]
+              : book.categories,
           pageCount: book.pageCount,
         },
       }));

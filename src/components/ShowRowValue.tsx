@@ -13,7 +13,7 @@ const ShowRowValue: React.FC<ShowRowValueProps> = ({
         <div className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 mb-16">
           <div>
             <div className="px-6 py-3">
-            <div className="flex items-center">
+              <div className="flex items-center">
                 <b>ID:</b> {selectedRow.id}
               </div>
             </div>
@@ -30,12 +30,14 @@ const ShowRowValue: React.FC<ShowRowValueProps> = ({
             </div>
             <div className="px-6 py-3">
               <div className="flex items-center">
-                <b>Page Count: </b>{selectedRow.volumeInfo.pageCount}
+                <b>Page Count: </b>
+                {selectedRow.volumeInfo.pageCount}
               </div>
             </div>
             <div className="px-6 py-3">
               <div className="flex items-center">
-                <b>Categories: </b> {selectedRow.volumeInfo.categories}
+                <b>Categories: </b>{" "}
+                {selectedRow.volumeInfo.categories}
               </div>
             </div>
           </div>

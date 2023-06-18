@@ -1,8 +1,6 @@
 import React from "react";
 import { Book } from "../types/types";
 
-
-
 interface TableBodyProps {
   data: Book[];
   onRowClick: (row: Book) => void;
@@ -48,7 +46,6 @@ const TableBody: React.FC<TableBodyProps> = ({
             <td className="px-6 py-4">
               {item.volumeInfo.pageCount}
             </td>
-            
           </tr>
         ))}
       </tbody>
